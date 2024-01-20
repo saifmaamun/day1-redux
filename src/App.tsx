@@ -1,21 +1,22 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "./redux/store"
+import { decrement, increment } from "./redux/features/counter/CounterSlice"
 
 
 function App() {
 
 const {count} = useSelector((state:RootState) => state.counter)
-
+const dispatch=useDispatch()
 
   return (
     <>
       <div>
         <div>
-          <button>increment</button>
+          <button onClick={()=>dispatch(increment())}>increment</button>
         </div>
         <div>{count}</div>
         <div>
-          <button>decrement</button>
+          <button  onClick={()=>dispatch(decrement())}>decrement</button>
         </div>
       </div>
     </>
